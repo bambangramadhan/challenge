@@ -1,14 +1,17 @@
 function deretKaskus(n) {
-
-    for( var i = 3;  i <= n * 3;  i += 3 ) {
-        if( i % 5 === 0 && i % 6 === 0){
-            console.log('Kaskus');
+  var hasil = [];
+  for( var i = 3;  i <= n * 3;  i += 3 ) {
+    if( i % 5 === 0 && i % 6 === 0){
+      hasil.push('Kaskus');
     }   else if ( i % 5 === 0){
-            console.log('Kas');
+      hasil.push('Kas');
     }   else if ( i % 6 === 0 ){
-            console.log('Kus');
+      hasil.push('Kus');
     } else {
-    console.log(i);
-}}}
+      hasil.push(i);
+    }
+  }
+  return hasil;
+}
 
-  console.log(deretKaskus(10));
+console.log(deretKaskus(10));
