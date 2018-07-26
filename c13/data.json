@@ -1,0 +1,10 @@
+[
+   {
+      "task": "saya akan memasak",
+      "complete": true
+   },
+   {
+      "task": "saya pergi ke sekolah",
+      "complete": false
+   }
+]
