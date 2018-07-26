@@ -17,7 +17,7 @@ switch (param[2]) {
   case 'add':
   let content = param.slice(3).join(' ');
   data = read();
-  data.push({task: content, complete: false});
+  data.push({task: content, complete: false, tags:[]});
   save(data);
   console.log(`"${content}" telah ditambahkan.`);
   break;
@@ -36,7 +36,7 @@ switch (param[2]) {
 
   case 'delete':
   data = read();
-  if (count < param.length && count > 0){
+  if (count <= data.length && count > 0){
     console.log(`"${data[count - 1].task}" telah dihapus dari daftar`);
     data.splice(count - 1, 1);
     save(data);
@@ -61,14 +61,13 @@ switch (param[2]) {
 
   case 'list:outstanding':
   data = read();
-  let outstanding = count;
-  if(outstanding == 'asc'){
+  if(count == 'asc'){
     for(let i = 0; i < data.length; i++){
       if(data[i].complete == false){
         console.log(`${i + 1}. ${data[i].complete ? '[x]' : '[ ]'} ${data[i].task}`);
       }
     }
-  }else if(outstanding == 'desc'){
+  }else if(count == 'desc'){
     for(let i = data.length - 1; i >= 0; i--){
       if(data[i].complete == false){
         console.log(`${i + 1}. ${data[i].complete ? '[x]' : '[ ]'} ${data[i].task}`);
@@ -81,14 +80,13 @@ switch (param[2]) {
 
   case 'list:completed':
   data = read();
-  let completed = count;
-  if(completed == 'asc'){
+  if(count == 'asc'){
     for(let i = 0; i < data.length; i++){
       if(data[i].complete == true){
         console.log(`${i + 1}. ${data[i].complete ? '[x]' : '[ ]'} ${data[i].task}`);
       }
     }
-  }else if(completed == 'desc'){
+  }else if(count == 'desc'){
     for(let i = data.length - 1; i >= 0; i--){
       if(data[i].complete == true){
         console.log(`${i + 1}. ${data[i].complete ? '[x]' : '[ ]'} ${data[i].task}`);
@@ -98,6 +96,22 @@ switch (param[2]) {
     console.log('write "node todo.js help" for more info');
   }
   break;
+
+  case 'tag':
+  data = read();
+  let potong = param.slice(4);
+  if(count <= data.length && count > 0){
+    data[count - 1].tags = potong;
+    save(data);
+    console.log(`Tag "${potong}" telah ditambahkan ke daftar "${data[count - 1].task}"`);
+  }else{
+    console.log('Anda memasukan "id" yang salah');
+  }
+  break;
+
+  case 'filter':
+  data = read();
+
 
   default:
   console.log('>>> JS TODO <<<');
