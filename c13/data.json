@@ -6,5 +6,13 @@
    {
       "task": "saya pergi ke sekolah",
       "complete": false
+   },
+   {
+      "task": "saya mau ke mesjid",
+      "complete": true
+   },
+   {
+      "task": "saya pergi ke pasar",
+      "complete": false
    }
 ]

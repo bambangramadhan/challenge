@@ -47,19 +47,57 @@ switch (param[2]) {
 
   case 'complete':
   data = read();
-  data[count - 1]["complete"] = true;
+  data[count - 1].complete = true;
   save(data);
   console.log(`"${data[count - 1].task}" telah selesai`);
   break;
 
   case 'uncomplete':
   data = read();
-  data[count - 1]["complete"] = false;
+  data[count - 1].complete = false;
   save(data);
   console.log(`"${data[count - 1].task}" status selesai dibatalkan`);
   break;
 
+  case 'list:outstanding':
+  data = read();
+  let outstanding = count;
+  if(outstanding == 'asc'){
+    for(let i = 0; i < data.length; i++){
+      if(data[i].complete == false){
+        console.log(`${i + 1}. ${data[i].complete ? '[x]' : '[ ]'} ${data[i].task}`);
+      }
+    }
+  }else if(outstanding == 'desc'){
+    for(let i = data.length - 1; i >= 0; i--){
+      if(data[i].complete == false){
+        console.log(`${i + 1}. ${data[i].complete ? '[x]' : '[ ]'} ${data[i].task}`);
+      }
+    }
+  }else{
+    console.log('write "node todo.js help" for more info');
+  }
+  break;
 
+  case 'list:completed':
+  data = read();
+  let completed = count;
+  if(completed == 'asc'){
+    for(let i = 0; i < data.length; i++){
+      if(data[i].complete == true){
+        console.log(`${i + 1}. ${data[i].complete ? '[x]' : '[ ]'} ${data[i].task}`);
+      }
+    }
+  }else if(completed == 'desc'){
+    for(let i = data.length - 1; i >= 0; i--){
+      if(data[i].complete == true){
+        console.log(`${i + 1}. ${data[i].complete ? '[x]' : '[ ]'} ${data[i].task}`);
+      }
+    }
+  }else{
+    console.log('write "node todo.js help" for more info');
+  }
+  break;
 
   default:
   console.log('>>> JS TODO <<<');
