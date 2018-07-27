@@ -9,6 +9,7 @@
    },
    {
       "task": "saya pergi ke sekolah",
-      "complete": false
+      "complete": false,
+      "tags": []
    }
 ]

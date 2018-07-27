@@ -12,6 +12,7 @@ function save(data){
 
 let data = [];
 let count = param[3];
+let purpose = param[2].slice(7);
 
 switch (param[2]) {
   case 'add':
@@ -20,6 +21,15 @@ switch (param[2]) {
   data.push({task: content, complete: false, tags:[]});
   save(data);
   console.log(`"${content}" telah ditambahkan.`);
+  break;
+
+  case 'task':
+  data = read();
+  if(count >= 0){
+    console.log(`${count}. ${data[count - 1].complete ? '[x]' : '[ ]'} ${data[count - 1].task}.`);
+  }else{
+    console.log('-- data kosong --');
+  }
   break;
 
   case 'list':
@@ -109,9 +119,18 @@ switch (param[2]) {
   }
   break;
 
-  case 'filter':
+  case `filter:${purpose}`:
   data = read();
-
+  if(purpose){
+    for(let i = 0; i < data.length; i++){
+      if(data[i].tags.includes(purpose)){
+        console.log(`${i + 1}. ${data[i].complete ? '[x]' : '[ ]'} ${data[i].task}`);
+      }
+    }
+  }else{
+    console.log('Salah memasukan id tag_name');
+  }
+  break;
 
   default:
   console.log('>>> JS TODO <<<');
