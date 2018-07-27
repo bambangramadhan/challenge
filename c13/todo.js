@@ -127,8 +127,6 @@ switch (param[2]) {
         console.log(`${i + 1}. ${data[i].complete ? '[x]' : '[ ]'} ${data[i].task}`);
       }
     }
-  }else{
-    console.log('Salah memasukan id tag_name');
   }
   break;
 
