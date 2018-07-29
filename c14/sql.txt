@@ -1,0 +1,14 @@
+INSERT INTO mahasiswa (nim,nama_mahasiswa,alamat,kode_jurusan)
+VALUES (5611728390, 'Ramesh', 'Bandung', 17);
+
+INSERT INTO jurusan (kode_jurusan,nama_jurusan)
+VALUES (17,'Teknik Informatika');
+
+INSERT INTO matakuliah (kode_matkul,sks,nama_matkul)
+VALUES (32, 24, 'Matematika');
+
+INSERT INTO dosen (nip,nama_dosen)
+VALUES (111234456, 'Bapak Ahmad');
+
+INSERT INTO mengontrak (nim,kode_matkul,nip,nilai)
+VALUES (5611728390, 32, 111234456, 1);
