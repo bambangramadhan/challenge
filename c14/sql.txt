@@ -11,4 +11,4 @@ INSERT INTO dosen (nip,nama_dosen)
 VALUES (111234456, 'Bapak Ahmad');
 
 INSERT INTO mengontrak (nim,kode_matkul,nip,nilai)
-VALUES (5611728390, 32, 111234456, 1);
+VALUES (5611728390, 32, 111234456, 'A');
