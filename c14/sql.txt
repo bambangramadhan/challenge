@@ -1,14 +1,65 @@
-INSERT INTO mahasiswa (nim,nama_mahasiswa,alamat,kode_jurusan)
-VALUES (5611728390, 'Ramesh', 'Bandung', 1);
+INSERT INTO mahasiswa (nim,nama_mahasiswa,umur,alamat,kode_jurusan)
+VALUES (5611728390, 'Ramesh', 21, 'Bandung', 1);
+
+INSERT INTO mahasiswa (nim,nama_mahasiswa,umur,alamat,kode_jurusan)
+VALUES (5611728391, 'Bambang', 18, 'Garut', 1);
+
+INSERT INTO mahasiswa (nim,nama_mahasiswa,umur,alamat,kode_jurusan)
+VALUES (5611728392, 'Helmi', 22, 'Jakarta', 2);
+
+INSERT INTO mahasiswa (nim,nama_mahasiswa,umur,alamat,kode_jurusan)
+VALUES (5611728393, 'Ghyfar', 19, 'Denpasar', 4);
+
+INSERT INTO mahasiswa (nim,nama_mahasiswa,umur,alamat,kode_jurusan)
+VALUES (5611728394, 'Ilham', 20, 'Garut', 3);
 
 INSERT INTO jurusan (kode_jurusan,nama_jurusan)
 VALUES (1,'Teknik Informatika');
 
+INSERT INTO jurusan (kode_jurusan,nama_jurusan)
+VALUES (2,'Manajemen');
+
+INSERT INTO jurusan (kode_jurusan,nama_jurusan)
+VALUES (3,'Ilmu Kelautan');
+
+INSERT INTO jurusan (kode_jurusan,nama_jurusan)
+VALUES (4,'Ilmu Hukum');
+
 INSERT INTO matakuliah (kode_matkul,sks,nama_matkul)
 VALUES (32, 16, 'Matematika');
+
+INSERT INTO matakuliah (kode_matkul,sks,nama_matkul)
+VALUES (22, 10, 'Komputer');
+
+INSERT INTO matakuliah (kode_matkul,sks,nama_matkul)
+VALUES (45, 8, 'PJOK');
+
+INSERT INTO matakuliah (kode_matkul,sks,nama_matkul)
+VALUES (11, 6, 'Fisika');
 
 INSERT INTO dosen (nip,nama_dosen)
 VALUES (111234456, 'Bapak Ahmad');
 
+INSERT INTO dosen (nip,nama_dosen)
+VALUES (111234457, 'Bapak Huda');
+
+INSERT INTO dosen (nip,nama_dosen)
+VALUES (111234458, 'Bapak Maula');
+
+INSERT INTO dosen (nip,nama_dosen)
+VALUES (111234459, 'Bapak Fikri');
+
 INSERT INTO mengontrak (nim,kode_matkul,nip,nilai)
 VALUES (5611728390, 32, 111234456, 'A');
+
+INSERT INTO mengontrak (nim,kode_matkul,nip,nilai)
+VALUES (5611728391, 32, 111234456, 'A');
+
+INSERT INTO mengontrak (nim,kode_matkul,nip,nilai)
+VALUES (5611728392, 22, 111234457, 'B');
+
+INSERT INTO mengontrak (nim,kode_matkul,nip,nilai)
+VALUES (5611728393, 45, 111234458, 'C');
+
+INSERT INTO mengontrak (nim,kode_matkul,nip,nilai)
+VALUES (5611728394, 11, 111234459, 'D');

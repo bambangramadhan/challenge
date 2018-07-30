@@ -1,0 +1,3 @@
+SELECT mahasiswa.nim, mahasiswa.nama_mahasiswa, mahasiswa.umur, mahasiswa.alamat, jurusan.nama_jurusan
+FROM mahasiswa INNER JOIN jurusan
+ON mahasiswa.kode_jurusan = jurusan.kode_jurusan;
