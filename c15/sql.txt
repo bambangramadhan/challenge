@@ -1,3 +1,44 @@
-SELECT mahasiswa.nim, mahasiswa.nama_mahasiswa, mahasiswa.umur, mahasiswa.alamat, jurusan.nama_jurusan
-FROM mahasiswa INNER JOIN jurusan
-ON mahasiswa.kode_jurusan = jurusan.kode_jurusan;
+1.  SELECT mahasiswa.nim, mahasiswa.nama_mahasiswa, mahasiswa.umur, mahasiswa.alamat, jurusan.nama_jurusan
+    FROM mahasiswa INNER JOIN jurusan
+    ON mahasiswa.kode_jurusan = jurusan.kode_jurusan;
+
+2.  SELECT * FROM mahasiswa
+    WHERE umur < 20;
+
+3.  SELECT mahasiswa.nim, mahasiswa.nama_mahasiswa, mahasiswa.umur, mahasiswa.alamat, mengontrak.nilai
+    FROM mahasiswa INNER JOIN mengontrak
+    ON mahasiswa.nim = mengontrak.nim AND (nilai = 'A' OR nilai = 'B');
+
+4.  SELECT mahasiswa.nim, mahasiswa.nama_mahasiswa, mahasiswa.umur, mahasiswa.alamat, matakuliah.sks
+    FROM mahasiswa INNER JOIN matakuliah
+    ON mahasiswa.nim = mengontrak.nim
+    INNER JOIN mengontrak
+    ON mengontrak.kode_matkul = matakuliah.kode_matkul AND sks > 10;
+
+5.  SELECT mahasiswa.nim, mahasiswa.nama_mahasiswa, mahasiswa.umur, mahasiswa.alamat, matakuliah.nama_matkul
+    FROM mahasiswa INNER JOIN matakuliah
+    ON mahasiswa.nim = mengontrak.nim
+    INNER JOIN mengontrak
+    ON mengontrak.kode_matkul = matakuliah.kode_matkul AND nama_matkul = 'Data Mining';
+
+6.  SELECT nama_dosen, COUNT(nama_mahasiswa)
+    FROM dosen INNER JOIN mengontrak
+    ON dosen.nip = mengontrak.nip
+    INNER JOIN mahasiswa
+    ON mengontrak.nim = mahasiswa.nim
+    GROUP BY nama_dosen;
+
+7.  SELECT * FROM mahasiswa
+    ORDER BY umur;
+
+8.  SELECT matakuliah.nama_matkul, mengontrak.nilai
+    FROM matakuliah INNER JOIN mengontrak
+    ON matakuliah.kode_matkul = mengontrak.kode_matkul AND (nilai = 'D' OR nilai = 'E');
+
+    SELECT mahasiswa.nim, mahasiswa.nama_mahasiswa, mahasiswa.umur, mahasiswa.alamat, mahasiswa.kode_jurusan, jurusan.nama_jurusan, dosen.nama_dosen 
+    FROM mahasiswa INNER JOIN jurusan
+    ON mahasiswa.kode_jurusan = jurusan.kode_jurusan
+    INNER JOIN mengontrak
+    ON mengontrak.nim = mahasiswa.nim
+    INNER JOIN dosen
+    ON dosen.nip = mengontrak.nip;

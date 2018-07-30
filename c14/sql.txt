@@ -1,5 +1,44 @@
+CREATE TABLE mahasiswa(
+   nim int,
+   nama_mahasiswa varchar(40),
+   umur int,
+   alamat varchar(50)
+   kode_jurusan int,
+   PRIMARY KEY (nim),
+   FOREIGN KEY (kode_jurusan) REFERENCES jurusan(kode_jurusan)
+);
+
+CREATE TABLE jurusan(
+   kode_jurusan int,
+   nama_jurusan varchar(40),
+   PRIMARY KEY (kode_jurusan)
+);
+
+CREATE TABLE matakuliah(
+   kode_matkul int,
+   nama_matkul varchar(40),
+   PRIMARY KEY (kode_matkul)
+);
+
+CREATE TABLE dosen(
+   nip int,
+   nama_dosen varchar(40),
+   PRIMARY KEY (nip)
+);
+
+CREATE TABLE mengontrak(
+nim varchar(10),
+kode_matkul varchar(20),
+nip varchar(10),
+nilai varchar(1),
+PRIMARY KEY (nim, kode_matkul, nip),
+FOREIGN KEY (nim) REFERENCES mahasiswa(nim),
+FOREIGN KEY (kode_matkul) REFERENCES matakuliah(kode_matkul),
+FOREIGN KEY (nip) REFERENCES dosen(nip)
+);
+
 INSERT INTO mahasiswa (nim,nama_mahasiswa,umur,alamat,kode_jurusan)
-VALUES (5611728390, 'Ramesh', 21, 'Bandung', 1);
+VALUES (56117 28390, 'Ramesh', 21, 'Bandung', 1);
 
 INSERT INTO mahasiswa (nim,nama_mahasiswa,umur,alamat,kode_jurusan)
 VALUES (5611728391, 'Bambang', 18, 'Garut', 1);
@@ -12,6 +51,9 @@ VALUES (5611728393, 'Ghyfar', 19, 'Denpasar', 4);
 
 INSERT INTO mahasiswa (nim,nama_mahasiswa,umur,alamat,kode_jurusan)
 VALUES (5611728394, 'Ilham', 20, 'Garut', 3);
+
+INSERT INTO mahasiswa (nim,nama_mahasiswa,umur,alamat,kode_jurusan)
+VALUES (5611728395, 'Kaffa', 20, 'Surabaya', 3);
 
 INSERT INTO jurusan (kode_jurusan,nama_jurusan)
 VALUES (1,'Teknik Informatika');
@@ -36,6 +78,9 @@ VALUES (45, 8, 'PJOK');
 
 INSERT INTO matakuliah (kode_matkul,sks,nama_matkul)
 VALUES (11, 6, 'Fisika');
+
+INSERT INTO matakuliah (kode_matkul,sks,nama_matkul)
+VALUES (12, 6, 'Data Mining');
 
 INSERT INTO dosen (nip,nama_dosen)
 VALUES (111234456, 'Bapak Ahmad');
@@ -63,3 +108,6 @@ VALUES (5611728393, 45, 111234458, 'C');
 
 INSERT INTO mengontrak (nim,kode_matkul,nip,nilai)
 VALUES (5611728394, 11, 111234459, 'D');
+
+INSERT INTO mengontrak (nim,kode_matkul,nip,nilai)
+VALUES (5611728395, 12, 111234459, 'E');
