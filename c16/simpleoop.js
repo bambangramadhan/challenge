@@ -1,7 +1,7 @@
 class CarFactory {
   constructor(){
     this.avanzaList = [];
-    this.lamborghinilist = [];
+    this.lamborghiniList = [];
   }
 
   static random() {
@@ -12,7 +12,7 @@ class CarFactory {
   produce(){
     for(let i = 0; i < CarFactory.random(); i++){
       this.avanzaList.push(new Avanza(5, 7, 1500));
-      this.lamborghinilist.push(new Lamborghini(2, 2, 9500));
+      this.lamborghiniList.push(new Lamborghini(2, 2, 9500));
     }
   }
 
@@ -20,11 +20,16 @@ class CarFactory {
     // print list list yang telah dibuat
     console.log(CarFactory.random());
     for (var i = 0; i < 1; i++) {
-      console.log(this.lamborghinilist[i].name);
-      console.log(this.lamborghinilist[i].doors);
-      console.log(this.lamborghinilist[i].seat);
-      console.log(this.lamborghinilist[i].cc);
-      console.log(this.lamborghinilist[i].tyre);
+      console.log(this.avanzaList[i].name);
+      console.log(this.avanzaList[i].doors);
+      console.log(this.avanzaList[i].seat);
+      console.log(this.avanzaList[i].cc);
+      console.log(this.avanzaList[i].tyre);
+      console.log(this.lamborghiniList[i].name);
+      console.log(this.lamborghiniList[i].doors);
+      console.log(this.lamborghiniList[i].seat);
+      console.log(this.lamborghiniList[i].cc);
+      console.log(this.lamborghiniList[i].tyre);
     }
   }
 }
