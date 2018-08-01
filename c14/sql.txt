@@ -111,3 +111,18 @@ VALUES (5611728394, 11, 111234459, 'D');
 
 INSERT INTO mengontrak (nim,kode_matkul,nip,nilai)
 VALUES (5611728395, 12, 111234459, 'E');
+
+INSERT INTO mengontrak (nim,kode_matkul,nip,nilai)
+VALUES (5611728390, 22, 111234457, 'B');
+
+INSERT INTO mengontrak (nim,kode_matkul,nip,nilai)
+VALUES (5611728391, 22, 111234457, 'A');
+
+INSERT INTO mengontrak (nim,kode_matkul,nip,nilai)
+VALUES (5611728393, 11, 111234459, 'B');
+
+INSERT INTO mengontrak (nim,kode_matkul,nip,nilai)
+VALUES (5611728391, 12, 111234459, 'A');
+
+INSERT INTO mengontrak (nim,kode_matkul,nip,nilai)
+VALUES (5611728393, 32, 111234456, 'A');
