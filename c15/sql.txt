@@ -9,11 +9,12 @@
     FROM mahasiswa INNER JOIN mengontrak
     ON mahasiswa.nim = mengontrak.nim AND (nilai = 'A' OR nilai = 'B');
 
-4.  SELECT mahasiswa.nim, mahasiswa.nama_mahasiswa, mahasiswa.umur, mahasiswa.alamat, matakuliah.sks
+4.  SELECT mahasiswa.nim, mahasiswa.nama_mahasiswa, mahasiswa.umur, mahasiswa.alamat, SUM(matakuliah.sks)
     FROM mahasiswa INNER JOIN matakuliah
     ON mahasiswa.nim = mengontrak.nim
     INNER JOIN mengontrak
-    ON mengontrak.kode_matkul = matakuliah.kode_matkul AND sks > 10;
+    ON mengontrak.kode_matkul = matakuliah.kode_matkul
+    GROUP BY nama_mahasiswa;
 
 5.  SELECT mahasiswa.nim, mahasiswa.nama_mahasiswa, mahasiswa.umur, mahasiswa.alamat, matakuliah.nama_matkul
     FROM mahasiswa INNER JOIN matakuliah
@@ -35,7 +36,7 @@
     FROM matakuliah INNER JOIN mengontrak
     ON matakuliah.kode_matkul = mengontrak.kode_matkul AND (nilai = 'D' OR nilai = 'E');
 
-    SELECT mahasiswa.nim, mahasiswa.nama_mahasiswa, mahasiswa.umur, mahasiswa.alamat, mahasiswa.kode_jurusan, jurusan.nama_jurusan, dosen.nama_dosen 
+    SELECT mahasiswa.nim, mahasiswa.nama_mahasiswa, mahasiswa.umur, mahasiswa.alamat, mahasiswa.kode_jurusan, jurusan.nama_jurusan, dosen.nama_dosen
     FROM mahasiswa INNER JOIN jurusan
     ON mahasiswa.kode_jurusan = jurusan.kode_jurusan
     INNER JOIN mengontrak
