@@ -68,19 +68,19 @@ INSERT INTO jurusan (kode_jurusan,nama_jurusan)
 VALUES (4,'Ilmu Hukum');
 
 INSERT INTO matakuliah (kode_matkul,sks,nama_matkul)
-VALUES (32, 16, 'Matematika');
+VALUES (32, 4, 'Matematika');
 
 INSERT INTO matakuliah (kode_matkul,sks,nama_matkul)
-VALUES (22, 10, 'Komputer');
+VALUES (22, 4, 'Komputer');
 
 INSERT INTO matakuliah (kode_matkul,sks,nama_matkul)
-VALUES (45, 8, 'PJOK');
+VALUES (45, 4, 'PJOK');
 
 INSERT INTO matakuliah (kode_matkul,sks,nama_matkul)
-VALUES (11, 6, 'Fisika');
+VALUES (11, 4, 'Fisika');
 
 INSERT INTO matakuliah (kode_matkul,sks,nama_matkul)
-VALUES (12, 6, 'Data Mining');
+VALUES (12, 4, 'Data Mining');
 
 INSERT INTO dosen (nip,nama_dosen)
 VALUES (111234456, 'Bapak Ahmad');
