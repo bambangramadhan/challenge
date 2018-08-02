@@ -14,7 +14,8 @@
     ON mahasiswa.nim = mengontrak.nim
     INNER JOIN mengontrak
     ON mengontrak.kode_matkul = matakuliah.kode_matkul
-    GROUP BY nama_mahasiswa;
+    GROUP BY nama_mahasiswa
+    HAVING SUM(sks) > 10;
 
 5.  SELECT mahasiswa.nim, mahasiswa.nama_mahasiswa, mahasiswa.umur, mahasiswa.alamat, matakuliah.nama_matkul
     FROM mahasiswa INNER JOIN matakuliah
