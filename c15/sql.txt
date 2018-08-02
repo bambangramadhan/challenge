@@ -33,14 +33,14 @@
 7.  SELECT * FROM mahasiswa
     ORDER BY umur;
 
-8.  SELECT matakuliah.nama_matkul, mengontrak.nilai
-    FROM matakuliah INNER JOIN mengontrak
-    ON matakuliah.kode_matkul = mengontrak.kode_matkul AND (nilai = 'D' OR nilai = 'E');
+8.  SELECT mahasiswa.nim, mahasiswa.nama_mahasiswa, mahasiswa.umur, mahasiswa.alamat, mahasiswa.kode_jurusan, jurusan.nama_jurusan, dosen.nama_dosen, mengontrak.nilai
+    FROM mahasiswa, jurusan, mengontrak, dosen
+    WHERE mahasiswa.kode_jurusan = jurusan.kode_jurusan AND mengontrak.nim = mahasiswa.nim AND dosen.nip = mengontrak.nip AND (nilai = 'D' OR nilai = 'E');
 
-    SELECT mahasiswa.nim, mahasiswa.nama_mahasiswa, mahasiswa.umur, mahasiswa.alamat, mahasiswa.kode_jurusan, jurusan.nama_jurusan, dosen.nama_dosen
+    SELECT mahasiswa.nim, mahasiswa.nama_mahasiswa, mahasiswa.umur, mahasiswa.alamat, mahasiswa.kode_jurusan, jurusan.nama_jurusan, dosen.nama_dosen, mengontrak.nilai
     FROM mahasiswa INNER JOIN jurusan
     ON mahasiswa.kode_jurusan = jurusan.kode_jurusan
     INNER JOIN mengontrak
     ON mengontrak.nim = mahasiswa.nim
     INNER JOIN dosen
-    ON dosen.nip = mengontrak.nip;
+    ON dosen.nip = mengontrak.nip AND (nilai = 'D' OR nilai = 'E');
