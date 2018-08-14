@@ -1,0 +1,26 @@
+[
+   {
+      "id": 1534231519920,
+      "string": "Testing Data",
+      "integer": "12",
+      "float": "1.45",
+      "date": "2017-12-12",
+      "boolean": "true"
+   },
+   {
+      "id": 1534231641384,
+      "string": "Coba lagi",
+      "integer": "99",
+      "float": "100.405",
+      "date": "2017-11-20",
+      "boolean": "false"
+   },
+   {
+      "id": 1534231673904,
+      "string": "Super Sekali",
+      "integer": "0",
+      "float": "1.45",
+      "date": "2017-12-12",
+      "boolean": "false"
+   }
+]
