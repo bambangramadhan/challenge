@@ -80,7 +80,7 @@ router.get('/search', function(req, res, next){
   if(edate != 0){arr.push(`date <= '${edate}'`)};
   if(boolean != 0){arr.push(`boolean = '${boolean}'`)};
   if(arr.length > 0){
-    let sql = 'SELECT * FROM data WHERE ' + arr.join('AND');
+    let sql = 'SELECT * FROM data WHERE ' + arr.join(' AND ');
     console.log(sql);
     db.all(sql, (err, data) => {
       if (err) throw err;
