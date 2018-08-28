@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Edit Form</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+  <h1>Edit Data</h1>
+  <br></br>
+  <form class="form-horizontal" action="" method="POST">
+
+    <div class="form-group">
+      <label for="id" class="col-sm-2 control-label">ID</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="id" name="id" value="<%= data.rows[0].id %>" readonly>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="string">String</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="string" name="string" value="<%= data.rows[0].string %>">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="integer">Integer</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="integer" name= "integer" value="<%= data.rows[0].integer %>">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="float">Float</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="float" name= "float" value="<%= data.rows[0].float %>">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="date">Date</label>
+      <div class="col-sm-10">
+        <input type="date" class="form-control" id="date" name="date" value="<%= util.formatEditDate(data.rows[0].date) %>">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="boolean" value="<%= data.rows[0].boolean %>">Boolean</label>
+      <div class="col-sm-10">
+        <select id="boolean" name="boolean" class="form-control">
+          <option value="">Choose the boolean...</option>
+          <option value="true" <%= data.rows[0].boolean == true ? "selected" : "" %> >true</option>
+          <option value="false" <%= data.rows[0].boolean == false ? "selected" : "" %> >false</option>
+        </select>
+      </div>
+    </div>
+
+    <br></br>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+
+  </form>
+</body>
+</html>
