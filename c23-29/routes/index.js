@@ -38,15 +38,18 @@ module.exports = function(pool){
           pool.query(`SELECT CONCAT(firstname, ' ',lastname) AS fullname, firstname FROM users`, (err, data2) => {
             if(err) throw err;
             //bisa membaca data walaupun tidak memiliki nama belakang
-            pool.query(`SELECT * FROM cek`, (err, cek) => {
+            pool.query(`SELECT admin FROM users WHERE email = '${req.session.email}'`, (err, pid) => {
               if(err) throw err;
-              let projectsdata = prjk.rows.map(function(item){
-                item.members = data.rows.filter(function(x){
-                  return x.projectid == item.projectid
-                }).map(function(a){ return a.fullname })
+              pool.query(`SELECT * FROM cek`, (err, cek) => {
+                if(err) throw err;
+                let projectsdata = prjk.rows.map(function(item){
+                  item.members = data.rows.filter(function(x){
+                    return x.projectid == item.projectid
+                  }).map(function(a){ return a.fullname })
+                })
+                //item.members-> members adalah atribut yang dikirm untuk membaca data alias nama
+                res.render('projects', {page: page, currentPage: currentPage, prjk: prjk.rows, data2: data2.rows, cek: cek.rows, query: req.query, pid: pid.rows});
               })
-              //item.members-> members adalah atribut yang dikirm untuk membaca data alias nama
-              res.render('projects', {page: page, currentPage: currentPage, prjk: prjk.rows, data2: data2.rows, cek: cek.rows, query: req.query});
             })
           })
         })

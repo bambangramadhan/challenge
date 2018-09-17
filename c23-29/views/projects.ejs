@@ -120,7 +120,7 @@
                 <%if(cek[0].ck_members) { %> <td><%= prjk[i].members %></td><% } %>
                 <%if(cek[0].ck_id || cek[0].ck_name || cek[0].ck_members) { %><td>
                   <a href="editProject/<%= prjk[i].projectid %>" class="btn btn-success">Edit</a>
-                  <a href="deleteProject/<%= prjk[i].projectid %>" class="btn btn-danger">Delete</a>
+                  <%if(pid[0].admin) { %><a href="deleteProject/<%= prjk[i].projectid %>" class="btn btn-danger">Delete</a><% } %>
                 </td>
                 <% } %>
               </tr>
