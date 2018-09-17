@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  body {
+    font-family: "Lato", sans-serif;
+  }
+
+  .sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #eee;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    color: blue;
+    display: block;
+  }
+
+  .sidenav a.active {
+    background-color: blue;
+    color: white;
+  }
+
+  .sidenav a:hover:not(.active) {
+    background-color: red;
+    color: white;
+  }
+
+  .main {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+  }
+
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+</style>
+<title></title>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Project Management System</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="../projects">Projects</a></li>
+          <li><a href=../profile>Profile</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="../signout">Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="sidenav">
+    <br><br>
+    <a href="../overview/<%= id%>">Overview</a>
+    <a href="../activity/<%= id%>">Activity</a><br>
+    <a href="../members/<%= id %>">Members</a>
+    <a class="active" href="#">Issues</a>
+  </div>
+
+  <br><br>
+
+  <form class="" action="../searchIssues/<%= id%>" method="get">
+    <div class="container" style="margin-left:160px">
+      <h1>Issues</h1><hr>
+      <h2>Filters</h2>
+
+      <div class="row">
+        <div class="col-md-2">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="ckid" value="true"<%= query.ckid ? ' checked' : '' %>> ID
+            </label>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <input type="text" class="form-control" id="id" name="id" placeholder="ID">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="cksubject" value="true"<%= query.cksubject ? ' checked' : '' %>> Subject
+            </label>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <input type="text" class="form-control" id="subject" name="subject" placeholder="Name">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="cktracker" value="true"<%= query.cktracker ? ' checked' : '' %>> Tracker
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-10">
+          <select id="tracker" name="tracker" class="form-control">
+            <option value="">Choose the tracker...</option>
+            <option value="Bug">Bug</option>
+            <option value="Feature">Feature</option>
+            <option value="Support">Support</option>
+          </select>
+        </div>
+      </div><br>
+    </form>
+
+    <button type="submit" class="btn btn-primary">Search</button>
+
+    <h2>Options</h2><br>
+    <form action="../cekissues/<%= id%>" method="get">
+      <div class="row">
+        <div class="col-md-2">Columns
+        </div>
+        <div class="col-md-2">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="ck_id" value="true" <%= cek[0].ck_id ? 'checked' : '' %> > ID
+              <br><input type="checkbox" name="ck_subject" value="true" <%= cek[0].ck_subject ? 'checked' : '' %>> Subject
+              <br><input type="checkbox" name="ck_tracker" value="true" <%= cek[0].ck_tracker ? 'checked' : '' %>> Tracker
+            </label>
+          </div>
+        </div>
+      </div><br>
+
+      <button type="submit" class="btn btn-primary">Apply</button>
+
+      <br><br>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <%if(cek[0].ck_id) { %><th>ID</th><% } %>
+            <%if(cek[0].ck_subject) { %><th>Subject</th><% } %>
+            <%if(cek[0].ck_tracker) { %><th>Tracker</th><% } %>
+            <%if(cek[0].ck_id || cek[0].ck_name || cek[0].ck_role) { %><th>Action</th><% } %>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(let i = 0; i < isu.length; i++) { %>
+            <tr>
+              <%if(cek[0].ck_id) { %> <td><%= isu[i].issueid %></td><% } %>
+              <%if(cek[0].ck_subject) { %> <td><%= isu[i].subject %></td><% } %>
+              <%if(cek[0].ck_tracker) { %> <td><%= isu[i].tracker %></td><% } %>
+              <%if(cek[0].ck_id || cek[0].ck_subject || cek[0].ck_tracker) { %><td>
+                <a href="../editIssues/<%= id %>/<%= isu[i].issueid %>" class="btn btn-success">Edit</a>
+                <a href="../deleteIssues/<%= id %>/<%= isu[i].issueid%>" class="btn btn-danger">Delete</a>
+              </td>
+              <% } %>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+
+        <nav aria-label="Pagination">
+          <%if(cek[0].ck_id || cek[0].ck_subject || cek[0].ck_tracker) { %>
+            <ul class="pagination">
+              <li class="page-item"><% if(currentPage != 1){ %><a class="page-link" href="/issues/<%= id%>?of=<%= (currentPage -1 )*3-3 %>&cp=<%= currentPage - 1 %>">Previous</a><% } %></li>
+              <% for(let i = 1; i <= page; i++){ %>
+                <li class="page-item <%= currentPage == i ? 'active' : '' ; %>"><a class="page-link" href="/issues/<%= id%>?of=<%= i*3-3 %>&cp=<%= i %>"><%= i %></a></li>
+                <% } %>
+                <li class="page-item"><% if(currentPage != page && page != 0){ %><a class="page-link" href="/issues/<%= id%>?of=<%= (++currentPage)*3-3 %>&cp=<%= currentPage%>">Next</a><% } %></li>
+              </ul>
+              <% } %>
+            </nav>
+
+            <a href="../newIssues/<%= id%>" class="btn btn-primary">Add</a>
+
+
+          </form><br><br><br>
+
+          <br><br>
+
+        </div>
+      </body>
+      </html>

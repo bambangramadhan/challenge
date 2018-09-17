@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  body {
+    font-family: "Lato", sans-serif;
+  }
+
+  .sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #eee;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    color: blue;
+    display: block;
+  }
+
+  .sidenav a.active {
+    background-color: blue;
+    color: white;
+  }
+
+  .sidenav a:hover:not(.active) {
+    background-color: red;
+    color: white;
+  }
+
+  .main {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+  }
+
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+</style>
+<title></title>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Project Management System</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Projects</a></li>
+          <li><a href=../profile>Profile</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="../signout">Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="sidenav">
+    <br><br>
+    <a href="../overview/<%= id%>">Overview</a>
+    <a href="../activity/<%= id%>">Activity</a><br>
+    <a href="../members/<%= id %>">Members</a>
+    <a class="active" href="#">Issues</a>
+  </div>
+
+  <br><br>
+  <form class="" action="" method="post">
+    <div class="container" style="margin-left:160px">
+      <h1><b>New Issue</b></h1><hr>
+      <div class="panel panel-default">
+        <div class="panel-body">
+
+          <div class="row">
+            <div class="col-md-2"><b>Tracker</b>
+            </div>
+            <div class="col-md-2">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="tracker" value="Bug"  > Bug
+                  <br><input type="radio" name="tracker" value="Feature"  > Feature
+                  <br><input type="radio" name="tracker" value="Support"  > Support
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="subject" class="col-sm-2 control-label">Subject</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" value="" required>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="description" class="col-sm-2 control-label">Description</label>
+            <div class="col-sm-10">
+              <textarea name="description" class="form-control" id="description" rows="3" placeholder="Description" required></textarea>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><b>Status</b>
+            </div>
+            <div class="col-md-2">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="status" value="New"  > New
+                  <br><input type="radio" name="status" value="In Progress" > In Progress
+                  <br><input type="radio" name="status" value="Resolved"  > Resolved
+                  <br><input type="radio" name="status" value="Feedback"  > Feedback
+                  <br><input type="radio" name="status" value="Closed"  > Closed
+                  <br><input type="radio" name="status" value="Rejected"  > Rejected
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><b>Priority</b>
+            </div>
+            <div class="col-md-2">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="priority" value="Normal"  > Normal
+                  <br><input type="radio" name="priority" value="High"  > High
+                  <br><input type="radio" name="priority" value="Urgent"  > Urgent
+                  <br><input type="radio" name="priority" value="Immediate"  > Immediate
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="assignee" class="col-sm-2 control-label">Assignee</label>
+            <div class="col-sm-10">
+              <select type="text" class="form-control" id="assignee" name="assignee" required>
+                <option value="">Choose...</option>
+                <% for(let i = 0; i < mbrs.length; i++) { %>
+                  <option value="<%= mbrs[i].userid %>"><%= mbrs[i].fullname %></option>
+                  <% } %>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="sdate" class="col-sm-2 control-label">Start date</label>
+              <div class="col-sm-10">
+                <input type="date" class="form-control" id="sdate" name="sdate" placeholder="Start date" value="" required>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="ddate" class="col-sm-2 control-label">Start date</label>
+              <div class="col-sm-10">
+                <input type="date" class="form-control" id="ddate" name="ddate" placeholder="Due date" value="" required>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="etime" class="col-sm-2 control-label">Estimated time</label>
+              <div class="col-sm-10">
+                <input type="date" class="form-control" id="etime" name="etime" placeholder="Due date" value="" required>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="done" class="col-sm-2 control-label">% done</label>
+              <div class="col-sm-10">
+                <select id="done" name="done" class="form-control">
+                  <option value="0">0</option>
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="30">30</option>
+                  <option value="40">40</option>
+                  <option value="50">50</option>
+                  <option value="60">60</option>
+                  <option value="70">70</option>
+                  <option value="80">80</option>
+                  <option value="90">90</option>
+                  <option value="100">100</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="files" class="col-sm-2 control-label">Files</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" id="files" name="files" value="" required>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+
+            <br><br>
+          </div>
+        </div>
+      </div>
+
+    </form><br><br>
+
+  </div>
+</body>
+</html>

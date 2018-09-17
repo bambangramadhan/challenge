@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  body {
+    font-family: "Lato", sans-serif;
+  }
+
+  .sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #eee;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    color: blue;
+    display: block;
+  }
+
+  .sidenav a.active {
+    background-color: blue;
+    color: white;
+  }
+
+  .sidenav a:hover:not(.active) {
+    background-color: red;
+    color: white;
+  }
+
+  .main {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+  }
+
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+</style>
+<title></title>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Project Management System</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Projects</a></li>
+          <li><a href=../profile>Profile</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="../signout">Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="sidenav">
+    <br><br>
+    <a href="../overview/<%= id%>">Overview</a>
+    <a href="../activity/<%= id%>">Activity</a><br>
+    <a href="../members/<%= id %>">Members</a>
+    <a class="active" href="#">Issues</a>
+  </div>
+
+  <br><br>
+  <form class="" action="" method="post">
+    <div class="container" style="margin-left:160px">
+      <h1><b>Edit Issue</b></h1><hr>
+      <div class="panel panel-default">
+        <div class="panel-body">
+
+          <div class="row">
+            <div class="col-md-2"><b>Tracker</b>
+            </div>
+            <div class="col-md-2">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="tracker" value="Bug"<%= isu[0].tracker == 'Bug' ? 'checked' : '' %>> Bug
+                  <br><input type="radio" name="tracker" value="Feature"<%= isu[0].tracker == 'Feature' ? 'checked' : '' %>> Feature
+                  <br><input type="radio" name="tracker" value="Support"<%= isu[0].tracker == 'Support' ? 'checked' : '' %>> Support
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="subject" class="col-sm-2 control-label">Subject</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" value="<%= isu[0].subject %>" required>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="description" class="col-sm-2 control-label">Description</label>
+            <div class="col-sm-10">
+              <textarea name="description" class="form-control" id="description" rows="3" placeholder="Description" value="<%= isu[0].description %>" required><%= isu[0].description %></textarea>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><b>Status</b>
+            </div>
+            <div class="col-md-2">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="status" value="New"<%= isu[0].status == 'New' ? 'checked' : '' %>> New
+                  <br><input type="radio" name="status" value="In Progress"<%= isu[0].status == 'In Progress' ? 'checked' : '' %>> In Progress
+                  <br><input type="radio" name="status" value="Resolved"<%= isu[0].status == 'Resolved' ? 'checked' : '' %>> Resolved
+                  <br><input type="radio" name="status" value="Feedback"<%= isu[0].status == 'Feedback' ? 'checked' : '' %>> Feedback
+                  <br><input type="radio" name="status" value="Closed"<%= isu[0].status == 'Closed' ? 'checked' : '' %>> Closed
+                  <br><input type="radio" name="status" value="Rejected"<%= isu[0].status == 'Rejected' ? 'checked' : '' %>> Rejected
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><b>Priority</b>
+            </div>
+            <div class="col-md-2">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="priority" value="Normal"<%= isu[0].priority == 'Normal' ? 'checked' : '' %>> Normal
+                  <br><input type="radio" name="priority" value="High"<%= isu[0].priority == 'High' ? 'checked' : '' %>> High
+                  <br><input type="radio" name="priority" value="Urgent"<%= isu[0].priority == 'Urgent' ? 'checked' : '' %>> Urgent
+                  <br><input type="radio" name="priority" value="Immediate"<%= isu[0].priority == 'Immediate' ? 'checked' : '' %>> Immediate
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="assignee" class="col-sm-2 control-label">Assignee</label>
+            <div class="col-sm-10">
+              <select type="text" class="form-control" id="assignee" name="assignee" required>
+                <option value="">Choose...</option>
+                <% for(let i = 0; i < mbrs.length; i++) { %>
+                  <option value="<%= mbrs[i].userid %>"<%= mbrs[i].userid == " mbrs[i].userid " ? "selected" : "" %>><%= mbrs[i].fullname %></option>
+                  <% } %>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="sdate" class="col-sm-2 control-label">Start date</label>
+              <div class="col-sm-10">
+                <input type="date" class="form-control" id="sdate" name="sdate" placeholder="Start date" value="<%= util.formatEditDate(isu[0].startdate) %>" required>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="ddate" class="col-sm-2 control-label">Start date</label>
+              <div class="col-sm-10">
+                <input type="date" class="form-control" id="ddate" name="ddate" placeholder="Due date" value="<%= util.formatEditDate(isu[0].duedate) %>" required>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="etime" class="col-sm-2 control-label">Estimated time</label>
+              <div class="col-sm-10">
+                <input type="date" class="form-control" id="etime" name="etime" placeholder="Due date" value="<%= util.formatEditDate(isu[0].duedate) %>" required>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="done" class="col-sm-2 control-label">% done</label>
+              <div class="col-sm-10">
+                <select id="done" name="done" class="form-control">
+                  <option value="0" <%= isu[0].done == '0' ? "selected" : "" %>>0</option>
+                  <option value="10" <%= isu[0].done == '10' ? "selected" : "" %>>10</option>
+                  <option value="20" <%= isu[0].done == '20' ? "selected" : "" %>>20</option>
+                  <option value="30" <%= isu[0].done == '30' ? "selected" : "" %>>30</option>
+                  <option value="40" <%= isu[0].done == '40' ? "selected" : "" %>>40</option>
+                  <option value="50" <%= isu[0].done == '50' ? "selected" : "" %>>50</option>
+                  <option value="60" <%= isu[0].done == '60' ? "selected" : "" %>>60</option>
+                  <option value="70" <%= isu[0].done == '70' ? "selected" : "" %>>70</option>
+                  <option value="80" <%= isu[0].done == '80' ? "selected" : "" %>>80</option>
+                  <option value="90" <%= isu[0].done == '90' ? "selected" : "" %>>90</option>
+                  <option value="100" <%= isu[0].done == '100' ? "selected" : "" %>>100</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="files" class="col-sm-2 control-label">Files</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" id="files" name="files" placeholder="Files" value="<%= isu[0].files %>" required>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="stime" class="col-sm-2 control-label">Spend Time</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" id="stime" name="stime" placeholder="Spend Time" value="<%= isu[0].spendtime %>" required>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="tversion" class="col-sm-2 control-label">Target Version</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" id="tversion" name="tversion" placeholder="Target Version" value="<%= isu[0].targetversion %>" required>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="author" class="col-sm-2 control-label">Author</label>
+              <div class="col-sm-10">
+                <select type="text" class="form-control" id="author" name="author" required>
+                  <option value="">Choose...</option>
+                  <% for(let i = 0; i < mbrs.length; i++) { %>
+                    <option value="<%= mbrs[i].userid %>"<%= mbrs[i].userid == " mbrs[i].userid " ? "selected" : "" %>><%= mbrs[i].fullname %></option>
+                    <% } %>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="cdate" class="col-sm-2 control-label">Created date</label>
+                <div class="col-sm-10">
+                  <input type="date" class="form-control" id="cdate" name="cdate" placeholder="Due date" value="<%= util.formatEditDate(isu[0].createddate) %>" required>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="udate" class="col-sm-2 control-label">Update date</label>
+                <div class="col-sm-10">
+                  <input type="date" class="form-control" id="udate" name="udate" placeholder="Due date" value="<%= util.formatEditDate(isu[0].updatedate) %>" required>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="clodate" class="col-sm-2 control-label">Closed date</label>
+                <div class="col-sm-10">
+                  <input type="date" class="form-control" id="clodate" name="clodate" placeholder="Due date" value="<%= util.formatEditDate(isu[0].closeddate) %>" required>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="ptask" class="col-sm-2 control-label">Parent Task</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="ptask" name="ptask" placeholder="Parent Task" value="<%= isu[0].parenttask %>" required>
+                </div>
+              </div>
+
+            <button type="submit" class="btn btn-primary">Update</button>
+
+            <br><br>
+          </div>
+        </div>
+      </div>
+
+    </form><br><br>
+
+  </div>
+</body>
+</html>

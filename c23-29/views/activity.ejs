@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  body {
+    font-family: "Lato", sans-serif;
+  }
+
+  .sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #eee;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    color: blue;
+    display: block;
+  }
+
+  .sidenav a.active {
+    background-color: blue;
+    color: white;
+  }
+
+  .sidenav a:hover:not(.active) {
+    background-color: red;
+    color: white;
+  }
+
+  .main {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+  }
+
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+</style>
+<title></title>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Project Management System</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="../projects">Projects</a></li>
+          <li><a href=../profile>Profile</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="../signout">Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="sidenav">
+    <br><br>
+    <a href="../overview/<%= id %>">Overview</a>
+    <a class="active" href="#">Activity</a><br>
+    <a href="../members/<%= id %>">Members</a>
+    <a href="../issues/<%= id%>">Issues</a>
+  </div>
+
+  <br><br>
+
+  <div class="container" style="margin-left:160px">
+    <h1><b>Activity</b></h1><hr>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p><b>Activity</b></p>
+        <p><b>From <%= dateBefore %> to <%= dateNow %></b></p>
+        <% for(let i = 0; i < arr.length; i++){ %>
+          <p><b><%= arr[i].day %></b></p>
+          <ul>
+            <% for(let j = arr[i].act.length-1; j >= 0 ; j--){ %>
+              <li><%= arr[i].act[j].note %></li>
+              <% } %>
+            </ul>
+            <% } %>
+          </div>
+        </div>
+
+        <br>
+
+      </div>
+    </body>
+    </html>

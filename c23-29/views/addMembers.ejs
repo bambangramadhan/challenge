@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project Management System</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Projects</a></li>
+            <li><a href=../profile>Profile</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../signout">Sign Out</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <form class="" action="" method="post">
+      <div class="container">
+        <h1>Add Member</h1><hr><br>
+
+        <div class="form-group row">
+          <div class="col-md-2">Name
+          </div>
+          <div class="col-md-2">
+            <% for(let i = 0; i < data.length; i++) { %>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="name" id='name' value="<%= data[i].userid %>"> <%= data[i].fullname %>
+              </label>
+            </div>
+            <% } %>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+
+      </div>
+    </form>
+
+
+  </body>
+</html>

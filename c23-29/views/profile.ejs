@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Project Management System</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="../projects">Projects</a></li>
+          <li class="active"><a href="#">Profile</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="../signout">Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <form class="" action="" method="post">
+    <div class="container">
+      <h1>Profile</h1><hr><br>
+
+      <div class="row">
+        <div class="col-md-2">
+          <label>Email</label>
+        </div>
+        <div class="col-md-10">
+          <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="<%= email %>" readonly>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          <label>Password</label>
+        </div>
+        <div class="col-md-10">
+          <input type="password" class="form-control" id="password" name="password" autocomplete="off" placeholder="Password" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">Position
+        </div>
+        <div class="col-md-2">
+          <div class="radio">
+            <label>
+              <input type="radio" name="position" value="Manager" <%= data[0].role == 'Manager' ? 'checked' : '' %> > Manager
+              <br><input type="radio" name="position" value="Software Developer" <%= data[0].role == 'Software Developer' ? 'checked' : '' %> > Software Developer
+              <br><input type="radio" name="position" value="Quality Assurance" <%= data[0].role == 'Quality Assurance' ? 'checked' : '' %> > Quality Assurance
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">Type
+        </div>
+        <div class="col-md-2">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="type" value="Fulltime" <%= data[0].type == 'Fulltime' ? 'checked' : '' %> > Fulltime
+              <br><input type="checkbox" name="type" value="Parttime" <%= data[0].type == 'Parttime' ? 'checked' : '' %> > Parttime
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Update</button>
+
+    </div>
+  </form>
+</body>
+</html>
