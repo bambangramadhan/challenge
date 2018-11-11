@@ -12,25 +12,42 @@ router.get('/', function(req, res) {
 
 router.post('/', (req, res) => {
   let product = new Product({
-    title: req.body.title
+    id: req.body.id,
+    title: req.body.title,
     rate: req.body.rate,
     description: req.body.description,
     price: req.body.price,
     brand: req.body.brand,
-    detailProduct: req.body.detailProduct
+    dproduct: req.body.dproduct
   })
   product.save().then(data => {
     res.json({
       status: 'SUCCESS',
       data: {
+        id: data.id,
         title: data.title,
         rate: data.rate,
         description: data.description,
         price: data.price,
         brand: data.brand,
-        detailProduct: data.detailProduct
+        dproduct: data.dproduct
       }
     })
+  }).catch(err => {
+    res.json({error: true, message: err.message})
+  })
+})
+
+router.get('/:id', function(req, res) {
+  Product.findOne({
+    id: req.params.id
+  })
+  .then(data => {
+    if(!data){
+      res.json({error: true, message: `note with id : ${id} not found`})
+    }else {
+      res.json(data)
+    }
   }).catch(err => {
     res.json({error: true, message: err.message})
   })

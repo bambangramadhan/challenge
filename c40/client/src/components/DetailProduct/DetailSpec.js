@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
 
 export default class DetailSpec extends Component {
   constructor(props, context) {

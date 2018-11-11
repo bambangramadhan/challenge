@@ -31,7 +31,7 @@ app.use(cookieParser());
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api/phonebooks', indexRouter);
+app.use('/api/products', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

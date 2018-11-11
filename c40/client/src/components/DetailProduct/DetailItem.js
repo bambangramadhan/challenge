@@ -26,7 +26,7 @@ export default class DetailItem extends Component {
             <div className="btn-plus"><span className="glyphicon glyphicon-plus"></span></div>
 
             <button className="btn btn-success btn-lg btn-block"><span className="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Buy</button>
-            <h6 style={{color: 'blue'}}><span className="glyphicon glyphicon-heart-empty"></span> Like</h6>
+            <h6 style={{color: 'blue'}}><span className="glyphicon glyphicon-heart-empty" style={{ cursor: "pointer" }}></span> Like</h6>
             </div>
         </div>
     )

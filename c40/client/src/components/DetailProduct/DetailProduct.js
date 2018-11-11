@@ -2,8 +2,11 @@ import React, { Component } from 'react'
 import DetailImage from './DetailImage'
 import DetailItem from './DetailItem'
 import DetailSpec from './DetailSpec'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
+import * as AppActions from '../../actions'
 
-export default class DetailProduct extends Component {
+class DetailProduct extends Component {
 
   render() {
     return(
@@ -35,3 +38,20 @@ export default class DetailProduct extends Component {
     )
   }
 }
+
+function mapStateToProps(state){
+  return{
+    data: state.data
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return{
+    actions: bindActionCreators(AppActions, dispatch)
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DetailProduct)
