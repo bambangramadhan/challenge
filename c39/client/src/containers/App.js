@@ -31,12 +31,14 @@ function mapStateToProps(state){
     data: state.data
   }
 }
+//untuk mengambil data dari reducers
 
 function mapDispatchToProps(dispatch){
   return{
     actions: bindActionCreators(AppActions, dispatch)
   }
 }
+//untuk mengambil data dari actions
 
 export default connect(
   mapStateToProps,

@@ -1,4 +1,4 @@
-import {ADD_DATA, LOAD_SUCCESS, LOAD_FAILURE, ADD_SUCCESS} from '../constants/ActionTypes'
+import {ADD_DATA, LOAD_SUCCESS, LOAD_FAILURE, ADD_SUCCESS, GET_DATA_BY_ID} from '../constants/ActionTypes'
 
 export default function data(state = [], action){
   switch (action.type) {
@@ -16,19 +16,23 @@ export default function data(state = [], action){
       ...state
     ]
     case ADD_SUCCESS:
-    let product = state
-    let idObject = product.map(function(x){
-      return x.id
-    }).indexOf(parseInt(action.product.id))
-    if(idObject > -1){
-      return state
-    }else{
-      return [action.product, ...state]
-    }
+    return state
+    // let product = state
+    // let idObject = product.map(function(x){
+    //   return x.id
+    // }).indexOf(parseInt(action.product.id))
+    // if(idObject > -1){
+    //   return state
+    // }else{
+    //   return [action.product, ...state]
+    // }
     case LOAD_SUCCESS:
     return action.product
 
     case LOAD_FAILURE:
+    return state
+
+    case GET_DATA_BY_ID:
     return state
 
     default:

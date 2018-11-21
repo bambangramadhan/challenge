@@ -35,6 +35,7 @@ export function addAds(title, rate, description, price, brand, dproduct) {
         console.error(err);
         dispatch(addFailure())
       }else {
+        console.log(res.body);
         dispatch(addSuccess(res.body))
         history.push('/');
       }
@@ -64,4 +65,8 @@ export function loadProducts(){
       }
     })
   }
+}
+
+export function getDataById(id) {
+  return {type: types.GET_DATA_BY_ID}
 }

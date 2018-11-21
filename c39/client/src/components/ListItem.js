@@ -25,6 +25,8 @@ export default class ListItem extends Component {
     var phone = this.state.phone.trim().toLowerCase()
 
     var filteredData = data
+    //si data berasal dari props nya, jika diluar return tidak pake kurawal seperti javascript biasa, tapi kalau di dalam return maka harus pake kurawal
+    //kalau tidak pake startwith maka harus mengisikan secara complete
 
     if(name !== '' && phone !== ''){
       filteredData = data.filter(item => item.name.toLowerCase().startsWith(name) && item.phone.toLowerCase().startsWith(phone))
